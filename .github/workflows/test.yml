@@ -11,7 +11,7 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     container:
-      image: golang:1.12-alpine
+      image: golang:1.12
     steps:
       - run: make setup
       - run: make test
