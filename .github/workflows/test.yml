@@ -7,11 +7,29 @@ on:
       - "!*"
 
 jobs:
+  github-context:
+    name: context
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump github context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+      - run: echo "${GITHUB_CONTEXT}"
+  checkout:
+    name: checkout
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - run: cat README.md
+      - run: pwd
   test:
     name: test
     runs-on: ubuntu-latest
     container:
       image: golang:1.12
     steps:
-      - run: make setup
-      - run: make test
+      - name: setup
+        run: make setup
+      - name: test
+        run: make test
+      - run: pwd
