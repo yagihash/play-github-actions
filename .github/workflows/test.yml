@@ -15,8 +15,8 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
-        run: pwd
-        run: "ls -al"
+      - run: pwd
+      - run: "ls -al"
 #  checkout:
 #    name: checkout
 #    runs-on: ubuntu-latest
