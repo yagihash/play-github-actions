@@ -29,3 +29,4 @@ jobs:
         env:
           RICHGO_LOCAL: 1
         run: make test
+      - run: richgo test -v -cover -race ./...
