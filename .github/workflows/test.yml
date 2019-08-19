@@ -1,0 +1,17 @@
+name: test
+on:
+  push:
+    branches:
+      - "*"
+    tags:
+      - "!*"
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    container:
+      image: golang:1.12-alpine
+    steps:
+      - run: make setup
+      - run: make test
