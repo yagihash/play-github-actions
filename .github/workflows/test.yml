@@ -15,22 +15,21 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
-      - run: pwd
-      - run: "ls -al"
   checkout:
     name: checkout
     runs-on: ubuntu-latest
+    container:
+      image: golang:1.12
     steps:
       - uses: actions/checkout@master
-      - run: cat README.md
   test:
     name: test
     runs-on: ubuntu-latest
     container:
       image: golang:1.12
     steps:
+      - run: "ls -al"
       - name: setup
         run: make setup
       - name: test
         run: make test
-      - run: pwd
