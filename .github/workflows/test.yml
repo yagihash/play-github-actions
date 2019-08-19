@@ -15,20 +15,14 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
-  checkout:
-    name: checkout
-    runs-on: ubuntu-latest
-    container:
-      image: golang:1.12
-    steps:
-      - uses: actions/checkout@master
   test:
     name: test
     runs-on: ubuntu-latest
     container:
       image: golang:1.12
     steps:
-      - run: "ls -al"
+      - name: checkout
+        uses: actions/checkout@master
       - name: setup
         run: make setup
       - name: test
