@@ -15,21 +15,17 @@ run:
 build:
 	@ go build -o bin/$(BIN) cmd/$(BIN)/main.go
 
-.PHONY: setup
-setup:
-	@ go get -u github.com/kyoh86/richgo
-
 .PHONY: vet
 vet:
 	@ go vet ./...
 
 .PHONY: test
 test: vet
-	@ richgo test -v -cover -race ./...
+	@ go test -v -cover -race ./...
 
 .PHONY: coverage
 coverage:
-	@ richgo test -v -race -coverprofile=/tmp/profile -covermode=atomic ./...
+	@ go test -v -race -coverprofile=/tmp/profile -covermode=atomic ./...
 	@ go tool cover -html=/tmp/profile
 
 .PHONY: validate-codecov-config
