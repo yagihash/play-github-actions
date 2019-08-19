@@ -26,4 +26,6 @@ jobs:
       - name: setup
         run: make setup
       - name: test
+        env:
+          RICHGO_LOCAL: 1
         run: make test
