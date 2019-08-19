@@ -21,8 +21,7 @@ jobs:
     name: checkout
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout
-        ref: ${{ github.sha }}
+      - uses: actions/checkout@master
       - run: cat README.md
   test:
     name: test
